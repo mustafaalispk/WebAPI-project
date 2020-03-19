@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+    
+        <ul class="navbar-nav flex-grow-1 flex-md-row">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li style="display:list-item">
+                <a asp-area="" asp-controller="Cart" asp-action="Index"  class="nav-link text-dark" title="shopping-cart">
+                <i class="fas fas-shopping-cart"></i>
+                <i style="font-size:24px" class="fa">&#xf07a;</i>
+                    </a>
+                </li>
+
+                <li style="display:list-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                        <i class="fas fa-user">
+                        </i>
+                    </a>
+                </li>
+                <li style="display:list-item">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </form>
+                </li>
+
+                <li style="display:list-item">
+                    <a class="nav-link bg-light px-2" asp-area="Admin" asp-page="/AddProduct">Ny produkt</a>
+                </li>
+                <li style="display:list-item">
+                    <a class="nav-link bg-light px-2" asp-area="Admin" asp-page="/ListProducts">List Prodkt</a>
+                </li>
+
+            }
+            else
+            {
+                <div>
+                    <span class="icon icon-inline">
+                        <a asp-area="" asp-controller="Cart" asp-action="Index" class="text-dark">
+                            <i class="material-icons" id="shoppings">shopping_basket </i>
+                        </a>
+                    </span>
+                    <span class="icon icon-inline">
+                        <a class="text-dark" asp-area="Identity" asp-page="/Account/Login">
+                            <i class="material-icons" style="margin-left:4px" id="Login">exit_to_app</i>
+                        </a>
+
+                    </span>
+                </div>
+                
+                          }
+        </ul>
+   
+    
+    

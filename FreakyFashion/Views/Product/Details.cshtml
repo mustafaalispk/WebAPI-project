@@ -1,0 +1,18 @@
+﻿@model HemTentan.Models.ProductViewModel
+@{
+    ViewData["Title"] = "DetaljSida";
+}
+<div class="row">
+    <div class="col-12 col-md-6">
+        <img class="d-block" src="@Model.Product.ImageUrl" alt="DetaljSida" />
+    </div>
+    <div class="col-12 col-md-6 px-4">
+        <h2 style="margin-left:100px;">@Model.Product.Name</h2>
+        <div style="margin-left:100px;">@Model.Product.ArticleNumber</div>
+        <div style="margin-left:100px;">@Model.Product.Description</div>
+        <div style="margin-left:100px;">@Model.Product.Price PKR</div>
+        <button class="btn bg-primary" style="display:block; width:40%; margin-left:100px;">Köp</button>
+    </div>
+</div>
+
+<partial name="_RecommendedProducts" model="Model.RecomendedProducts" />

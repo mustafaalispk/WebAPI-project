@@ -1,0 +1,47 @@
+﻿ @model HemTentan.Models.HomeViewModel
+@{
+    ViewData["Title"] = "StartSida";
+}
+    <div id="carouselExampleIndicators" class="hero carousel col-12 slide mb-4" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner mb-4">
+            @{
+                var first = true;
+            }
+            @foreach (var product in Model.Products.Take(3))
+            {
+                <div class="carousel-item @(first?Html.Raw("active"):Html.Raw(""))">
+                    <div class="row">
+                        <div class="col-md-6" style="width:100%; height:400px">
+                            <h3 style="padding-top: 100px; text-align: center">@product.Name</h3>
+                            <hr>
+                            <p style="padding-top: 20px; text-align: center">@product.Description</p>
+                            <div style="text-align: center"><button style="margin-top: 20px;">Köp nu</button></div>
+                        </div>
+                        <div class="col-md-6" style="width:100%; height:400px">
+                            <img src="@product.ImageUrl" class="d-block border " style="width:95%; height:390px" alt="First slide">
+                        </div>
+                    </div>
+                </div>
+                first = false;
+            }
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <partial name="_Categories" model="Model.Categories" />
+    <partial name="_PopularProducts" model="Model.Products" />
+   
+
+

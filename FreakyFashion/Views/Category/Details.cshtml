@@ -1,0 +1,23 @@
+﻿@model HemTentan.Models.CategoryViewModel
+
+@* DisplayNameFor visar namnet till property och DisplayFor visar inehåller i den property *@
+<div class="container">
+    <div class="col-12 text-center mt-2 mb-2" style="font-size:20px">@Html.DisplayFor(model => @Model.Category.Name )</div>
+    <div class="row">
+        @foreach (var product in Model.Category.ProductCategories)
+        {
+            //if (product.ProductCategories == "dresses")
+            //{
+            <div class="col-md-3">
+                @*<a href="/productdetail/@product.Id">*@
+                <a asp-route="productBySlug" asp-route-urlSlug="@product.Product.UrlSlug" class="btn bg-light mt-5">
+                    <img class="w-100" style="display:block; font-size:100px; width:100%;" src="@product.Product.ImageUrl" alt="Image" />
+                </a>
+                <div>@product.Product.Name</div>
+                <div>@product.Product.Price PKR</div>
+            </div>
+            @*}*@
+
+        }
+    </div>
+</div>

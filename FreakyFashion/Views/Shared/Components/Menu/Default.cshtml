@@ -1,0 +1,14 @@
+﻿@model HemTentan.Entities.Menu
+    <nav>
+        <ul class="navbar-nav flex-grow-1 flex-md-row">
+            @foreach (var item in Model.Items)
+            {
+            <li class="nav-item">
+                <a class="nav-link bg-light px-2 ml-2 " href="@item.Link">
+                    @item.Name
+                </a>
+            </li>
+
+            }
+        </ul>
+    </nav>

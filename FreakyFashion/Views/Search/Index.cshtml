@@ -1,0 +1,39 @@
+﻿@model HemTentan.Models.SearchViewModel
+@{
+    ViewData["Title"] = "SearchSida";
+}
+
+<h2 class="col-12 px-3">Administration</h2>
+<div class="col-12 px-3">Produkter</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-4 pt-3">
+            <h6>Produkter</h6>
+        </div>
+        <div class="col-12 col-md-4"></div>
+        <form asp-controller="Search" asp-action="Index" method="get" class="col-12 col-md-2 mt-2  w-100">            
+                <input name="q" type="search" placeholder="Sök produkt" />
+        </form>
+    </div>
+</div>
+<div class="container">
+    @foreach (var productResult in Model.SearchResult)
+    { 
+        <div class="row mb-1" style="border:solid" >
+            <div class="col-12 col-md-8 ml-0">
+                <p>
+                    <h2 style="margin-left:0;">@productResult.Name</h2>
+                    <div style="margin-left:0;">@productResult.ArticleNumber</div>
+                    <div style="margin-left:0;">@productResult.Description</div>
+                    <div style="margin-left:0;">@productResult.Price PKR</div>
+
+                </p>
+            </div>
+            <div class="col-12 col-md-4" style="margin-top:4px; padding-left:200px">
+                <img src="@productResult.ImageUrl" style="height:160px; width:160px;" alt="Picture" />
+            </div>
+            </div>
+            
+    }
+            
+</div>

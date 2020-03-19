@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FreakyFashion</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="https://kit.fontawesome.com/5ebc39a59f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/site.css?id=3" />
+   
+</head>
+<body>
+    <div class="container bg-light mb-4">
+        <header class="page-header mt-0 row">
+            <div class="col-12 col-md-4 w-100">
+                <a asp-controller="Home" asp-action="Index">
+                    <img src="https://via.placeholder.com/300x60?text=Logotype"
+                         alt="Logotype" />
+                </a>
+            </div>
+            
+            <form asp-controller="Search" asp-action="Index" method="get" class="col-12 col-md-2 mt-2  w-100">
+                <input name="q" type="search" placeholder="Sök produkt" />
+            </form>
+            <div class="col-12 col-md-2"></div>
+            <div class="col-12  col-md-block col-md-4">
+                 <partial name="_LoginPartial" />
+            </div>
+                <div class="row">
+                    <div class="navbar col-12 col-md-block">
+                        @* "Menu" är namnet på Viewcomponent som sitter under ViewComponent -----> refererar till MenuViewComponent.
+                menuName är en parameter från string menuName i MenuViewComponent.cs*@
+                        @*@await Component.InvokeAsync("Menu", new { menuName = "MainMenu" })*@
+
+                        @* Under ner använder vi TagHelper sen vi lägg in den i _ViewImports.cshtml. Det
+                är en deklarativ sätt. *@
+                        <vc:menu menu-name="MainMenu"></vc:menu>
+                    </div>
+                </div>
+</header>
+    </div>
+
+               
+                <div class="container">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+
+                <footer class=" footer text-muted">
+                    <div class="page-footer container ">
+                        <div class="icon-message-list  row ">
+                            <div class="icon-message col-sm-3">
+                                <i class="material-icons" id="accountbox">account_box</i>
+                                <span>Gratis frakt och returer</span>
+                            </div>
+
+                            <!-- <div col-12 col-sm-3>   -->
+                            <div class="icon-message  col-sm-3">
+                                <i class="material-icons" id="favorites">favorite_border</i>
+                                <span>Expressfrakt</span>
+                            </div>
+
+                            <!-- <div col-12 col-sm-3>   -->
+                            <div class="icon-message  col-sm-3">
+                                <i class="material-icons" id="shoppings">shopping_basket </i>
+                                <span>Säkra betalning</span>
+                            </div>
+
+                            <!-- <div col-12 col-sm-3>   -->
+                            <div class="icon-message col-sm-3">
+                                <i class="material-icons" id="flag">flag </i>
+                                <span>Säkra betalning</span>
+                            </div>
+
+                        </div>
+
+                        @*<div class="container footer-nav-list">*@
+                        <div class="nav-list row">
+                            <div class="footer-nav col-sm-3">
+                                <div class="heading">Shopping</div>
+                                <ul>
+                                    <li><a href="#">Vinterjackor</a></li>
+                                    <li><a href="#">Pufferjackor</a></li>
+                                    <li><a href="#">kappa</a></li>
+                                    <li><a href="#">Trenchcoats</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-nav col-sm-3">
+                                <div class="heading">Mina Sidor</div>
+                                <ul>
+                                    <li><a href="#">Mina Ordrar</a></li>
+                                    <li><a href="#">Mitt konto</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        @*</div>*@
+                        <div class="footer-copyright text-center py-3">
+                            © 2019 Copyright:
+                            <a href="#"> FreakyFashion</a>
+                        </div>
+                    </div>
+                </footer>
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="~/js/site.js" asp-append-version="true"></script>
+                @RenderSection("Scripts", required: false)
+</body>
+</html>

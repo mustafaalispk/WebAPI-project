@@ -1,0 +1,19 @@
+﻿@model List<HemTentan.Entities.ProductCategory>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-left mt-2 mb-2 px-0" style="font-size:25px">Rekommenderat för dig</div>
+        </div>
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-3">
+                    <a asp-route="productBySlug" asp-route-urlSlug="@product.Product.UrlSlug">
+                        <img class="w-100" style="display:block; font-size:100px; width:100%;" src="@product.Product.ImageUrl" alt="Image" />
+                    </a>
+                    <div>@product.Product.Name</div>
+                    <div>@product.Product.Price PKR</div>
+                </div>
+            }
+        </div>
+    </div>
